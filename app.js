@@ -1,18 +1,18 @@
+import { Airport } from "./models/airport.js";
 import {
-  createPerson,
-  getAllPeople,
-  updatePerson,
-  deletePerson
-} from "services/peopleService.js";
+  RegularPassenger,
+  StudentPassenger,
+} from "./models/passengers.js";
 
-const p1 = createPerson("barak");
-console.log(p1.welcome());
+function finishmain() {
+    
+  const airport = new Airport();
+  airport.addfly();
+  airport.createTicket();
+  const regular = new RegularPassenger("yehouda", 123, 5000, "uytf", true);
+  const student = new StudentPassenger("YEHIEL", 1235, 9878, "IUG");
+  console.log(regular.buyTicket(airport, "Flight 101", "regular"));
 
-const p2 = createPerson("hanan");
-console.log(getAllPeople());
-
-updatePerson(1, "avram and belulu");
-console.log(getAllPeople());
-
-deletePerson(2);
-console.log(getAllPeople());
+  console.log(student.buyTicket(airport, "Flight 101", "VIP"));
+}  
+console.log(finishmain())
